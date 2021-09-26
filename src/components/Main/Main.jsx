@@ -1,8 +1,12 @@
 import SignInFrame from "../SignInFrame/SignInFrame";
+import SignUpFrame from "../SingUpFrame/SignUpFrame";
 
 function Main (props) {
   return (
-    <SignInFrame />
+    <>
+      <SignInFrame />
+      <SignUpFrame />
+    </>
   );
 }
 

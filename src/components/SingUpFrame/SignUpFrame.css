@@ -1,4 +1,4 @@
-.signInFrame {
+.signUpFrame {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -16,7 +16,7 @@
   box-sizing: border-box;
 }
 
-.signInFrame__title {
+.signUpFrame__title {
   position: absolute;
   margin: 0 auto 0;
   right: 50%;

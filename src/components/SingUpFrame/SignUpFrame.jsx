@@ -1,9 +1,9 @@
-import './SignInFrame.css'
+import './SignUpFrame.css';
 
-function SignInFrame (props) {
+function SignUpFrame (props) {
   return (
-    <section className='signInFrame'>
-      <h1 className='signInFrame__title'>Sign In</h1>
+    <section className='signUpFrame'>
+      <h1 className='signUpFrame__title'>Sign Up</h1>
       <form className='form'>
         <div className='form__input-string'>
           <p className='text text_color_red'>login as:</p>
@@ -21,11 +21,11 @@ function SignInFrame (props) {
         </div>
       </form>
       <div className='text-wrapper'>
-        <p className='text'>Don't have an account?</p>
-        <button className='button button_place_form'>Sign Up</button>
+        <p className='text'>Already have an account?</p>
+        <button className='button button_place_form'>Sign In</button>
       </div>
     </section>
   );
 }
 
-export default SignInFrame;
+export default SignUpFrame;
