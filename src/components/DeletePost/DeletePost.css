@@ -1,4 +1,4 @@
-.signInFrame {
+.deletePost {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -12,11 +12,11 @@
   font-family: 'Courier New';
   font-weight: 400;
   line-height: 20.39px;
-  color: #b9b9b9;
+  color: #ff0000;
   box-sizing: border-box;
 }
 
-.signInFrame__title {
+.deletePost__title {
   position: absolute;
   margin: 0 auto 0;
   right: 50%;
@@ -26,48 +26,24 @@
   color: #000;
 }
 
-.form {
+.deletePost__menu {
   display: flex;
-  flex-direction: column;
-}
-
-.form__input-string {
-  display: flex;
-  margin-bottom: 5px;
-}
-
-.form__input-string:last-of-type {
   margin-bottom: 40px;
 }
 
-.text {
+.deletePost__text {
   margin: 0;
 }
 
-.text_color_red {
-  color: red;
-}
-
-.text-wrapper {
+.deletePost__wrapper {
   display: flex;
 }
 
-.form__input {
-  background-color: #292929;
-  border: 1px solid #b9b9b9;
-  margin-left: 3px;
-  padding: 0;
-  color: #b9b9b9;
-  outline: none;
-  width: 168px;
-  height: 18px;
-}
-
-.button {
+.deletePost__btn {
   outline: none;
   border: 0;
   background: transparent;
-  color: #ff9494;
+  color: #ff0000;
   font-size: 18px;
   font-family: 'Courier New';
   font-weight: 400;
@@ -77,11 +53,12 @@
   cursor: pointer;
 }
 
-.button:hover {
+.deletePost__btn:hover {
   opacity: .7;
   transition: .2s ease;
 }
 
-.button_place_form {
-  margin-left: 3px;
+.deletePost__btn_type_delete {
+  color: #ff9494;
 }
+
