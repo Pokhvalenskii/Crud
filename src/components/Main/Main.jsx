@@ -9,10 +9,10 @@ function Main (props) {
   return (
     <>
       <Header />
-      <Post />
-      <DeletePost />
-      <CreateFrame />
-      <SignInFrame />
+      {/* <Post /> */}
+      {/* <DeletePost /> */}
+      {/* <CreateFrame /> */}
+      {/* <SignInFrame /> */}
       <SignUpFrame />
     </>
   );

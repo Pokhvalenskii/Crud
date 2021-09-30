@@ -1,10 +1,16 @@
 import './SignInFrame.css'
 
 function SignInFrame (props) {
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('check')
+  }
+
   return (
     <section className='signInFrame'>
       <h1 className='signInFrame__title'>Sign In</h1>
-      <form className='form'>
+      <form className='form' onSubmit={handleSubmit}>
         <div className='form__input-string'>
           <p className='text text_color_red'>login as:</p>
           <p className='text'>USER_EMAIL=</p>
@@ -17,7 +23,7 @@ function SignInFrame (props) {
         </div>
         <div className='form__input-string'>
           <p className='text text_color_red'>[confirm@button~]$</p>
-          <button className='button button_place_form'>enter</button>
+          <button className='button button_place_form' type='submit'>enter</button>
         </div>
       </form>
       <div className='text-wrapper'>
