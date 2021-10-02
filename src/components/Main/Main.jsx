@@ -1,5 +1,3 @@
-import SignInFrame from "../SignInFrame/SignInFrame";
-import SignUpFrame from "../SingUpFrame/SignUpFrame";
 import Header from "../Header/Header";
 import CreateFrame from "../CreateFrame/CreateFrame";
 import DeletePost from "../DeletePost/DeletePost";
@@ -12,8 +10,6 @@ function Main (props) {
       {/* <Post /> */}
       {/* <DeletePost /> */}
       {/* <CreateFrame /> */}
-      {/* <SignInFrame /> */}
-      <SignUpFrame />
     </>
   );
 }

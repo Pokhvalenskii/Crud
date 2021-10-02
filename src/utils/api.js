@@ -1,6 +1,6 @@
 class Api {
   constructor(data) {
-    this._urlApi = data._urlApi;
+    this._urlApi = data.urlApi;
   }
 
   _checkResponses (res) {
@@ -18,10 +18,42 @@ class Api {
     })
       .then(this._checkResponses);
   }
+
+  signup(data) {
+    console.log('check signup')
+    return fetch(`${this._urlApi}/register`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        'name': data.name,
+        'email': data.email,
+        'password': data.password,
+        'password_confirmation': data.password_confirmation
+      })
+    })
+      .then(this._checkResponses);
+  }
+
+  signin(data) {
+    console.log('check signin')
+    return fetch (`${this._urlApi}/token`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        'email': data.email,
+        'password': data.password
+      })
+    })
+      .then(this._checkResponses);
+  }
 }
 
 const api = new Api({
-  urlApi: 'https://test.flcd.ru/api'
+  urlApi: 'http://test.flcd.ru/api'
 })
 
 export default api;
