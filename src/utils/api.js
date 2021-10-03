@@ -9,7 +9,7 @@ class Api {
     } return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  showPosts(data) {
+  showPosts() {
     return fetch (`${this._urlApi}/post`, {
       method: 'GET',
       headers: {
@@ -20,7 +20,7 @@ class Api {
   }
 
   signup(data) {
-    console.log('check signup')
+    // console.log('check signup')
     return fetch(`${this._urlApi}/register`, {
       method: 'POST',
       headers: {
@@ -37,7 +37,7 @@ class Api {
   }
 
   signin(data) {
-    console.log('check signin')
+    // console.log('check signin')
     return fetch (`${this._urlApi}/token`, {
       method: 'POST',
       headers: {
@@ -50,6 +50,19 @@ class Api {
     })
       .then(this._checkResponses);
   }
+
+  aboutMe(data) {
+    // console.log('aboutMe', data.jwt)
+    return fetch(`${this._urlApi}/user/self`, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${data.jwt}`
+      }
+    })
+      .then(this._checkResponses);
+  }
+
 }
 
 const api = new Api({

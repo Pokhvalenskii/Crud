@@ -1,9 +1,9 @@
 import './SignInFrame.css'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 
 function SignInFrame (props) {
-
+  const history = useHistory();
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
 
@@ -17,13 +17,14 @@ function SignInFrame (props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('check');
+    console.log('check1');
     props.handleLogin({
       email: userEmail,
       password: userPassword
     })
-      .then((res) => {
-        console.log('OK ', res)
+      .then(() => {
+        console.log('check2');
+        // history.push('/')
       })
   }
 
@@ -34,9 +35,9 @@ function SignInFrame (props) {
         <div className='form__input-string'>
           <p className='text text_color_red'>login as:</p>
           <p className='text'>USER_EMAIL=</p>
-          <input 
-            className='form__input' 
-            type="text" 
+          <input
+            className='form__input'
+            type="text"
             placeholder='enter email'
             required
             value={userEmail}
@@ -46,8 +47,8 @@ function SignInFrame (props) {
         <div className='form__input-string'>
           <p className='text text_color_red'>Password:</p>
           <p className='text'>PASSWORD=</p>
-          <input 
-            className='form__input' 
+          <input
+            className='form__input'
             type="password"
             placeholder='enter password'
             required
