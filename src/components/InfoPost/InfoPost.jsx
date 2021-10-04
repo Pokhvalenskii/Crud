@@ -4,6 +4,8 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useContext, useState } from "react/cjs/react.development";
 import Comment from '../Comment/Comment'
 import EditPostFrame from '../EditPostFrame/EditPostFrame';
+import Header from "../Header/Header";
+
 
 function InfoPost(props) {
 
@@ -11,6 +13,7 @@ function InfoPost(props) {
   const { idPost } = useParams();
   const [ editPostFrameActive,
      setEditPostFrameActive] = useState(false);
+
   let renderPost = '';
   let renderNewPost = [];
 
@@ -23,14 +26,11 @@ function InfoPost(props) {
     })
   }
 
-  // function handleEditPost() {
-
-  // }
-
   console.log('RENDER PROPS', renderPost)
 
-
   return(
+    <>
+    <Header logout={props.logout}/>
     <section className='infoPost'>
       <div className='infoPost__menu'>
         <p className='infoPost__user'>${renderPost.user_id}</p>
@@ -61,6 +61,7 @@ function InfoPost(props) {
         postId={renderPost.id}
       />}
     </section>
+    </>
   )
 }
 

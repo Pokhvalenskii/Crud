@@ -13,6 +13,7 @@
 .post__menu {
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid rgb(0, 255, 0, .2);
 }
 
 .post__user {

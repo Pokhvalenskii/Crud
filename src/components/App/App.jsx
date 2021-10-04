@@ -111,15 +111,13 @@ function App() {
     }
     return api.editPost(newData)
       .then((res) => {
-        // history.push(`/post/${id}`)
-        // showPosts();
+        showPosts();
         console.log('PATCH', res)
       })
   }
 
   return (
     <CurrentUserContext.Provider value={{currentUser, loggedIn}}>
-      {/* <Main /> */}
       <Switch>
         <Route exact path='/'>
           <Main //друзья
@@ -133,6 +131,7 @@ function App() {
         </Route>
         <Route path='/post/:idPost'>
           <InfoPost
+            logout={logout}
             editPost={editPost}
             posts={posts}
           />

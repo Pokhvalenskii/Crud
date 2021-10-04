@@ -99,7 +99,6 @@ class Api {
   }
 
   editPost(data) {
-    // console.log('EDIT', data)
     return fetch(`${this._urlApi}/post/${data.id}`, {
       method: 'PATCH',
       headers: {
@@ -111,6 +110,10 @@ class Api {
       })
     })
       .then(this._checkResponses);
+  }
+
+  createComment() {
+    
   }
 }
 

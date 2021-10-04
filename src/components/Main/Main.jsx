@@ -5,9 +5,13 @@ import CreatePost from "../CreatePost/CreatePost";
 import Post from "../Post/Post";
 import MoreBtn from "../MoreBtn/MoreBtn";
 import { Switch, Route, useHistory } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useContext, useState } from "react/cjs/react.development";
 
 
 function Main (props) {
+
+  const { loggedIn } = useContext(CurrentUserContext);
 
   let renderPosts = [];
   // console.log(props.posts)
@@ -20,7 +24,7 @@ function Main (props) {
   return (
     <>
       <Header logout={props.logout}/>
-      <CreatePost createPost={props.createPost}/>
+      {loggedIn && <CreatePost createPost={props.createPost}/>}
 
       {
         renderPosts.reverse().slice(0, props.hiddenPost).map(post => (
