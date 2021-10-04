@@ -112,8 +112,14 @@ class Api {
       .then(this._checkResponses);
   }
 
-  createComment() {
-    
+  deleteComment(data) {
+    return fetch(`${this._urlApi}/comment/${data.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${data.jwt}`
+      }
+    })
   }
 }
 

@@ -5,6 +5,8 @@ import { useContext, useState } from "react/cjs/react.development";
 import Comment from '../Comment/Comment'
 import EditPostFrame from '../EditPostFrame/EditPostFrame';
 import Header from "../Header/Header";
+import DeletePost from '../DeletePost/DeletePost';
+
 
 
 function InfoPost(props) {
@@ -13,6 +15,8 @@ function InfoPost(props) {
   const { idPost } = useParams();
   const [ editPostFrameActive,
      setEditPostFrameActive] = useState(false);
+
+  const [ deletePostFrameActive, setDeletePostFrameActive] = useState(false);
 
   let renderPost = '';
   let renderNewPost = [];
@@ -24,6 +28,10 @@ function InfoPost(props) {
         renderPost = post;
       }
     })
+  }
+
+  function handleDelete() {
+    props.deletePost(renderPost.id)
   }
 
   console.log('RENDER PROPS', renderPost)
@@ -41,7 +49,7 @@ function InfoPost(props) {
               setEditPostFrameActive(true);
             }}>[...]
           </button>}
-          {renderPost.user_id === currentUser.id && <button className='infoPost__btn' >[X]</button>}
+          {renderPost.user_id === currentUser.id && <button className='infoPost__btn' onClick={() => {setDeletePostFrameActive(true)}}>[X]</button>}
           <button className='post__btn'>[&rarr;]</button>
         </div>
       </div>
@@ -59,6 +67,11 @@ function InfoPost(props) {
         currentUser={currentUser}
         setEditPostFrameActive={setEditPostFrameActive}
         postId={renderPost.id}
+      />}
+      {deletePostFrameActive && <DeletePost
+        setDeletePostFrameActive={setDeletePostFrameActive}
+        handleDelete={handleDelete}
+        post={props.post}
       />}
     </section>
     </>

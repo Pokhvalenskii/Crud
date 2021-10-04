@@ -104,7 +104,7 @@ function App() {
   }
 
   function editPost(data) {
-    const newData ={
+    const newData = {
       text: data.text,
       id: data.id,
       jwt: JWTtoken
@@ -115,6 +115,18 @@ function App() {
         console.log('PATCH', res)
       })
   }
+
+  // function deleteComment(id) {
+  //   const data = {
+  //     id: id,
+  //     jwt: JWTtoken
+  //   }
+  //   return api.deleteComment(data)
+  //     .this((res) => {
+  //       showPosts();
+  //       console.log('DELETE')
+  //     })
+  // }
 
   return (
     <CurrentUserContext.Provider value={{currentUser, loggedIn}}>
@@ -134,6 +146,7 @@ function App() {
             logout={logout}
             editPost={editPost}
             posts={posts}
+            deletePost={deletePost}
           />
         </Route>
         <Route path='/signin'>
