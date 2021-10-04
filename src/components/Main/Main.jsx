@@ -1,31 +1,28 @@
 import Header from "../Header/Header";
 import CreateFrame from "../CreateFrame/CreateFrame";
 import DeletePost from "../DeletePost/DeletePost";
+import CreatePost from "../CreatePost/CreatePost";
 import Post from "../Post/Post";
 import MoreBtn from "../MoreBtn/MoreBtn";
 
 function Main (props) {
 
   let renderPosts = [];
-  // console.log('main posts', props.posts.length);
   if(props.posts.length === undefined) {
     console.log('пока не загрузились', props.posts)
   } else {
     console.log('загрузились', props.posts)
     props.posts.forEach(post => {
-      // console.log(post)
       renderPosts.push(post);
     })
-
   }
 
   return (
     <>
-      <Header
-        logout={props.logout}
-      />
+      <Header logout={props.logout}/>
+      <CreatePost createPost={props.createPost}/>
       {
-        renderPosts.slice(0, props.hiddenPost).map(post => (
+        renderPosts.reverse().slice(0, props.hiddenPost).map(post => (
           <Post
             key={post.id}
             post={post}

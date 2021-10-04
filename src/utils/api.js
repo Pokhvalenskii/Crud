@@ -37,7 +37,6 @@ class Api {
   }
 
   signin(data) {
-    // console.log('check signin')
     return fetch (`${this._urlApi}/token`, {
       method: 'POST',
       headers: {
@@ -61,6 +60,20 @@ class Api {
       }
     })
       .then(this._checkResponses);
+  }
+
+  createPost(data) {
+    console.log('CREATEPOST', data.jwt)
+    return fetch(`${this._urlApi}/post`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${data.jwt}`
+      },
+      body: JSON.stringify({
+        'text': data.text
+      })
+    })
   }
 
 }

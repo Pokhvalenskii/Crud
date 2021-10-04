@@ -1,7 +1,7 @@
 .createFrame {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: fixed;
   margin: 0 auto;
   padding: 5px;
   width: 600px;
@@ -14,6 +14,10 @@
   line-height: 20.39px;
   color: #b9b9b9;
   box-sizing: border-box;
+  background: #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .createFrame__title {

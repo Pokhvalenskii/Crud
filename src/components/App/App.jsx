@@ -11,7 +11,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [posts, setPosts] = useState({});
-  const [hiddenPost, setHiddenPost] = useState(5);
+  const [hiddenPost, setHiddenPost] = useState(10);
   const JWTtoken = localStorage.getItem('jwt');
 
   useEffect(() => {
@@ -70,12 +70,24 @@ function App() {
     console.log('logout', localStorage);
   }
 
+  function createPost(text) {
+    const newData = {
+      text: text,
+      jwt: JWTtoken
+    }
+    return api.createPost(newData)
+      .then(() => {
+        showPosts();
+      })
+  }
+
   return (
     <CurrentUserContext.Provider value={{currentUser, loggedIn}}>
       {/* <Main /> */}
       <Switch>
         <Route exact path='/'>
           <Main
+            createPost={createPost}
             logout={logout}
             posts={posts}
             morePosts={morePosts}

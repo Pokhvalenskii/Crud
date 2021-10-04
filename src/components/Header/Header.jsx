@@ -1,6 +1,6 @@
-import './Header.css'
-import logo from '../../images/logo.svg'
-import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import './Header.css';
+import logo from '../../images/logo.svg';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ function Header (props) {
   // console.log('USER', currentUser)
 
   function handleExit() {
-    console.log('exitHeader')
+    console.log('exitHeader');
     props.logout();
   }
 
