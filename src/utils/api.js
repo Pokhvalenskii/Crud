@@ -63,7 +63,6 @@ class Api {
   }
 
   createPost(data) {
-    console.log('CREATEPOST', data.jwt)
     return fetch(`${this._urlApi}/post`, {
       method: 'POST',
       headers: {
@@ -74,8 +73,45 @@ class Api {
         'text': data.text
       })
     })
+      .then(this._checkResponses)
   }
 
+  deletePost(data) {
+    return fetch(`${this._urlApi}/post/${data.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${data.jwt}`
+      }
+    })
+      .then(this._checkResponses)
+  }
+
+  showOnePost(data) {
+    return fetch(`${this._urlApi}/post/${data.id}`, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${data.jwt}`
+      }
+    })
+      .then(this._checkResponses);
+  }
+
+  editPost(data) {
+    // console.log('EDIT', data)
+    return fetch(`${this._urlApi}/post/${data.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${data.jwt}`
+      },
+      body: JSON.stringify({
+        'text': data.text
+      })
+    })
+      .then(this._checkResponses);
+  }
 }
 
 const api = new Api({

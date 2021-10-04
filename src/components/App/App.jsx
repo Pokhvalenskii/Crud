@@ -2,6 +2,7 @@ import Main from '../Main/Main'
 import api from '../../utils/api';
 import SignInFrame from "../SignInFrame/SignInFrame";
 import SignUpFrame from "../SingUpFrame/SignUpFrame";
+import InfoPost from '../InfoPost/InfoPost';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
@@ -15,9 +16,7 @@ function App() {
   const JWTtoken = localStorage.getItem('jwt');
 
   useEffect(() => {
-    console.log('useEffect')
     showPosts();
-    console.log('statePOsts',posts)
     if(JWTtoken !== null) {
       api.aboutMe({
         jwt: JWTtoken
@@ -81,17 +80,61 @@ function App() {
       })
   }
 
+  function deletePost(id) {
+    const data = {
+      id: id,
+      jwt: JWTtoken
+    }
+    return api.deletePost(data)
+      .then(() => {
+        showPosts();
+      })
+  }
+
+  function showOnePost(id) {
+    const data ={
+      id: id,
+      jwt: JWTtoken
+    }
+    return api.showOnePost(data)
+      .then((res) => {
+        // history.push(`/post/${id}`)
+        console.log('POST', res)
+      })
+  }
+
+  function editPost(data) {
+    const newData ={
+      text: data.text,
+      id: data.id,
+      jwt: JWTtoken
+    }
+    return api.editPost(newData)
+      .then((res) => {
+        // history.push(`/post/${id}`)
+        // showPosts();
+        console.log('PATCH', res)
+      })
+  }
+
   return (
     <CurrentUserContext.Provider value={{currentUser, loggedIn}}>
       {/* <Main /> */}
       <Switch>
         <Route exact path='/'>
-          <Main
+          <Main //друзья
             createPost={createPost}
             logout={logout}
             posts={posts}
             morePosts={morePosts}
             hiddenPost={hiddenPost}
+            deletePost={deletePost}
+          />
+        </Route>
+        <Route path='/post/:idPost'>
+          <InfoPost
+            editPost={editPost}
+            posts={posts}
           />
         </Route>
         <Route path='/signin'>

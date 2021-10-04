@@ -4,14 +4,14 @@ import DeletePost from "../DeletePost/DeletePost";
 import CreatePost from "../CreatePost/CreatePost";
 import Post from "../Post/Post";
 import MoreBtn from "../MoreBtn/MoreBtn";
+import { Switch, Route, useHistory } from 'react-router-dom';
+
 
 function Main (props) {
 
   let renderPosts = [];
-  if(props.posts.length === undefined) {
-    console.log('пока не загрузились', props.posts)
-  } else {
-    console.log('загрузились', props.posts)
+  // console.log(props.posts)
+  if(props.posts.length !== undefined) {
     props.posts.forEach(post => {
       renderPosts.push(post);
     })
@@ -21,11 +21,13 @@ function Main (props) {
     <>
       <Header logout={props.logout}/>
       <CreatePost createPost={props.createPost}/>
+
       {
         renderPosts.reverse().slice(0, props.hiddenPost).map(post => (
           <Post
             key={post.id}
             post={post}
+            deletePost={props.deletePost}
           />
         ))
       }

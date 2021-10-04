@@ -1,19 +1,23 @@
 .deletePost {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: fixed;
   margin: 0 auto;
   padding: 5px;
   width: 600px;
   height: 350px;
   border: 3px solid #00ff00;
   border-top: 23px solid #00ff00;
+  background: #000;
   font-size: 18px;
   font-family: 'Courier New';
   font-weight: 400;
   line-height: 20.39px;
   color: #ff0000;
   box-sizing: border-box;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .deletePost__title {
