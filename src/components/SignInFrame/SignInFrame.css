@@ -1,7 +1,7 @@
 .signInFrame {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: fixed;
   margin: 0 auto;
   padding: 5px;
   width: 600px;
@@ -14,6 +14,10 @@
   line-height: 20.39px;
   color: #b9b9b9;
   box-sizing: border-box;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
 }
 
 .signInFrame__title {
@@ -75,6 +79,7 @@
   padding: 0;
   margin-left: 5px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -84,4 +89,15 @@
 
 .button_place_form {
   margin-left: 3px;
+}
+
+.signInFrame__logo {
+  position: fixed;
+  top: -20%;
+  left: -3px;
+}
+
+.signInFrame__logo:hover {
+  opacity: .7;
+  transition: .2s ease;
 }

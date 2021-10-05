@@ -1,10 +1,6 @@
 import './Comment.css'
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { useContext, useState } from "react/cjs/react.development";
 
 function Comment(props) {
-  console.log('COMMENT CHECK', props.post)
-  const { currentUser } = useContext(CurrentUserContext);
 
   return(
     <>

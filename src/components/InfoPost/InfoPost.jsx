@@ -17,6 +17,8 @@ function InfoPost(props) {
      setEditPostFrameActive] = useState(false);
 
   const [ deletePostFrameActive, setDeletePostFrameActive] = useState(false);
+  
+  
 
   let renderPost = '';
   let renderNewPost = [];
@@ -29,19 +31,18 @@ function InfoPost(props) {
       }
     })
   }
+  const color = currentUser.id === renderPost.user_id ? 'infoPost__text_color_green' : ''
 
   function handleDelete() {
     props.deletePost(renderPost.id)
   }
-
-  console.log('RENDER PROPS', renderPost)
 
   return(
     <>
     <Header logout={props.logout}/>
     <section className='infoPost'>
       <div className='infoPost__menu'>
-        <p className='infoPost__user'>${renderPost.user_id}</p>
+        <p className={`infoPost__user ${color}`}>${renderPost.user_id}</p>
         <div className='infoPost__wrapper'>
           {renderPost.user_id === currentUser.id &&
           <button

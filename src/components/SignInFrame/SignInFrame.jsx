@@ -1,6 +1,8 @@
 import './SignInFrame.css'
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
+import logo from '../../images/logo.svg';
+
 
 function SignInFrame (props) {
   const history = useHistory();
@@ -17,19 +19,18 @@ function SignInFrame (props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('check1');
     props.handleLogin({
       email: userEmail,
       password: userPassword
     })
       .then(() => {
-        console.log('check2');
-        // history.push('/')
+        history.push('/')
       })
   }
 
   return (
     <section className='signInFrame'>
+      <Link to='/'><img className='signInFrame__logo' src={logo} alt='Логотип'></img></Link>
       <h1 className='signInFrame__title'>Sign In</h1>
       <form className='form' onSubmit={handleSubmit}>
         <div className='form__input-string'>

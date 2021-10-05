@@ -7,22 +7,18 @@ import { Link } from 'react-router-dom';
 
 function Header (props) {
 
-  // const context = useContext(CurrentUserContext);
   const { currentUser, loggedIn } = useContext(CurrentUserContext);
 
-  // console.log('USER', currentUser)
-
   function handleExit() {
-    console.log('exitHeader');
     props.logout();
   }
 
   return (
     <section className='header'>
-      <img className='logo' src={logo} alt='Логотип'></img>
+      <Link to='/'><img className='logo' src={logo} alt='Логотип'></img></Link>      
       <ul className='header__menu'>
         <li className='header__menu-item'>
-          {loggedIn && <a className='link' href='/test'>[${currentUser.name}]</a>}
+          {loggedIn && <Link className='link' to='/profile'>[${currentUser.name}]</Link>}
         </li>
         <li className='header__menu-item'>
           {loggedIn && <Link className='link' to='/signin' onClick={handleExit}>[Exit~]</Link>}

@@ -1,13 +1,15 @@
 import { useState } from 'react/cjs/react.development';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useContext } from "react/cjs/react.development";
 import './CreateFrame.css'
 
 function CreateFrame (props) {
 
+  const { currentUser } = useContext(CurrentUserContext);
   const [ postText, setPostText ] = useState('');
 
   function handleChangePostText(e) {
     setPostText(e.target.value);
-    console.log('postText', postText)
   }
 
   function handleSubmit(e) {
@@ -22,10 +24,10 @@ function CreateFrame (props) {
     <section className='createFrame'>
       <h1 className='createFrame__title'>Create post</h1>
       <div className='createFrame__menu'>
-        <p className='text text_color_red'>[UserEmail~]</p>
+        <p className='text'>[${currentUser.email}~]</p>
         <button className='createFrame__btn' onClick={() => {
           props.setCreateFrameActive(false)
-        }}>[Exit~]</button>
+        }}>Exit</button>
       </div>
       <form className='form' onSubmit={handleSubmit}>
         <textarea
@@ -40,7 +42,7 @@ function CreateFrame (props) {
           onChange={handleChangePostText}>
         </textarea>
         <div className='form__wrapper'>
-          <p className='text text_color_red'>[UserEmail~]$</p>
+          <p className='text'>[${currentUser.email}~]</p>
           <button className='form__button' type='submit'>enter</button>
         </div>
       </form>

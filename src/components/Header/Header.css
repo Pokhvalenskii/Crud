@@ -23,14 +23,20 @@
 
 .link {
   text-decoration: none;
-  color: #ff0000;
+  color: #ff9494;
 }
 
 .link:hover {
   opacity: .7;
+  transition: .2s ease;
 }
 
 .logo {
   width: 151px;
   height: 23px;
+}
+
+.logo:hover {
+  opacity: .7;
+  transition: .2s ease;
 }

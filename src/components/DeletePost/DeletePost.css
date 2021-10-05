@@ -33,10 +33,12 @@
 .deletePost__menu {
   display: flex;
   margin-bottom: 40px;
+  justify-content: space-between;
 }
 
 .deletePost__text {
   margin: 0;
+  color: #00ff00;
 }
 
 .deletePost__wrapper {
@@ -47,7 +49,7 @@
   outline: none;
   border: 0;
   background: transparent;
-  color: #ff0000;
+  color: #ff9494;
   font-size: 18px;
   font-family: 'Courier New';
   font-weight: 400;

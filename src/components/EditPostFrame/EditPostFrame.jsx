@@ -1,8 +1,11 @@
 import './EditPostFrame.css'
 import { useState } from 'react/cjs/react.development';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useContext } from "react/cjs/react.development";
 
 function EditPostFrame(props) {
 
+  const { currentUser } = useContext(CurrentUserContext);
   const [ postText, setPostText ] = useState('');
 
   function handleChangePostText(e) {
@@ -25,7 +28,7 @@ function EditPostFrame(props) {
     <section className='editPostFrame'>
       <h1 className='editPostFrame__title'>Edit post</h1>
       <div className='editPostFrame__menu'>
-        <p className='text text_color_red'>[UserEmail~]</p>
+        <p className='text'>[${currentUser.email}~]</p>
         <button className='editPostFrame__btn' onClick={() => {
           props.setEditPostFrameActive(false)
         }}>[Exit~]</button>
@@ -43,7 +46,7 @@ function EditPostFrame(props) {
           onChange={handleChangePostText}>
         </textarea>
         <div className='form__wrapper'>
-          <p className='text text_color_red'>[UserEmail~]$</p>
+          <p className='text'>[${currentUser.email}~]</p>
           <button className='form__button' type='submit'>enter</button>
         </div>
       </form>

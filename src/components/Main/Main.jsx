@@ -1,12 +1,9 @@
 import Header from "../Header/Header";
-import CreateFrame from "../CreateFrame/CreateFrame";
-import DeletePost from "../DeletePost/DeletePost";
 import CreatePost from "../CreatePost/CreatePost";
 import Post from "../Post/Post";
 import MoreBtn from "../MoreBtn/MoreBtn";
-import { Switch, Route, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { useContext, useState } from "react/cjs/react.development";
+import { useContext } from "react/cjs/react.development";
 
 
 function Main (props) {
@@ -14,7 +11,7 @@ function Main (props) {
   const { loggedIn } = useContext(CurrentUserContext);
 
   let renderPosts = [];
-  // console.log(props.posts)
+  
   if(props.posts.length !== undefined) {
     props.posts.forEach(post => {
       renderPosts.push(post);

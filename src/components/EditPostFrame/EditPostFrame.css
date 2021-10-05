@@ -38,27 +38,26 @@
 
 .text {
   margin: 0;
-}
-
-.text_color_red {
-  color: red;
+  color: #00ff00;
 }
 
 .editPostFrame__btn {
   outline: none;
   border: 0;
   background: transparent;
-  color: red;
+  color: #ff9494;
   font-size: 18px;
   font-family: 'Courier New';
   font-weight: 400;
   line-height: 20.39px;
   padding: 0;
   margin: 0;
+  cursor: pointer;
 }
 
 .editPostFrame__btn:hover {
   opacity: .7;
+  transition: .2s ease;
 }
 
 .form__textarea {

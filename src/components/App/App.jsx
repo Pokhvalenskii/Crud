@@ -33,7 +33,6 @@ function App() {
   }
 
   function handleRegister(data) {
-    // console.log('sign up');
     return api.signup(data);
   }
 
@@ -45,10 +44,8 @@ function App() {
   }
 
   function handleLogin(data) {
-    // console.log('sign in');
     return api.signin(data)
       .then((res) => {
-        // console.log('flag1', res.token)
         setLoggedIn(true);
         api.aboutMe({
           jwt: res.token
@@ -56,7 +53,6 @@ function App() {
           .then((res) => {
             setCurrentUser(res);
             setLoggedIn(true);
-            // console.log('RES', res)
             history.push('/')
           })
         localStorage.setItem('jwt', res.token);
@@ -66,7 +62,6 @@ function App() {
   function logout() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
-    console.log('logout', localStorage);
   }
 
   function createPost(text) {
@@ -91,18 +86,6 @@ function App() {
       })
   }
 
-  function showOnePost(id) {
-    const data ={
-      id: id,
-      jwt: JWTtoken
-    }
-    return api.showOnePost(data)
-      .then((res) => {
-        // history.push(`/post/${id}`)
-        console.log('POST', res)
-      })
-  }
-
   function editPost(data) {
     const newData = {
       text: data.text,
@@ -112,27 +95,14 @@ function App() {
     return api.editPost(newData)
       .then((res) => {
         showPosts();
-        console.log('PATCH', res)
       })
   }
-
-  // function deleteComment(id) {
-  //   const data = {
-  //     id: id,
-  //     jwt: JWTtoken
-  //   }
-  //   return api.deleteComment(data)
-  //     .this((res) => {
-  //       showPosts();
-  //       console.log('DELETE')
-  //     })
-  // }
 
   return (
     <CurrentUserContext.Provider value={{currentUser, loggedIn}}>
       <Switch>
         <Route exact path='/'>
-          <Main //друзья
+          <Main
             createPost={createPost}
             logout={logout}
             posts={posts}

@@ -1,6 +1,8 @@
 import './SignUpFrame.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
+import logo from '../../images/logo.svg';
+
 
 function SignUpFrame (props) {
 
@@ -9,24 +11,23 @@ function SignUpFrame (props) {
   const [userConfirmPassword, setUserConfirmPassword] = useState('');
   const [userEmail, setUserEmail] = useState('');
 
+  const history = useHistory();
+
+
   function handleChangeUserName(e) {
     setUserName(e.target.value)
-    console.log('useStateName', userName)
   }
 
   function handleChangeUserPassword(e) {
     setUserPassword(e.target.value)
-    console.log('useStateName', userPassword)
   }
 
   function handleChangeUserConfirmPassword(e) {
     setUserConfirmPassword(e.target.value)
-    console.log('useStateName', userConfirmPassword)
   }
   
   function handleChangeUserEmail(e) {
     setUserEmail(e.target.value)
-    console.log('useStateName', userEmail)
   }
 
   function handleSubmit(e){
@@ -37,14 +38,15 @@ function SignUpFrame (props) {
       password: userPassword,
       password_confirmation: userConfirmPassword
     })
-      .then((res) => {
-        console.log('OK ', res)
+      .then(() => {
+        history.push('/signin')
       })
   }
 
 
   return (
     <section className='signUpFrame'>
+      <Link to='/'><img className='signUpFrame__logo' src={logo} alt='Логотип'></img></Link>
       <h1 className='signUpFrame__title'>Sign Up</h1>
       <form className='form' onSubmit={handleSubmit}>
         <div className='form__input-string'>
